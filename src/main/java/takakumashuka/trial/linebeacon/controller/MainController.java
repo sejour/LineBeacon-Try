@@ -2,8 +2,10 @@ package takakumashuka.trial.linebeacon.controller;
 
 import com.linecorp.bot.client.LineMessagingService;
 import com.linecorp.bot.model.ReplyMessage;
+import com.linecorp.bot.model.event.BeaconEvent;
 import com.linecorp.bot.model.event.Event;
 import com.linecorp.bot.model.event.MessageEvent;
+import com.linecorp.bot.model.event.beacon.BeaconContent;
 import com.linecorp.bot.model.event.message.MessageContent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
 import com.linecorp.bot.model.message.TextMessage;
@@ -45,6 +47,14 @@ public class MainController {
                     ).execute().body();
                     System.out.println("Sent messages: " + apiResponse);
                 }
+            }
+            else if (event instanceof BeaconEvent) {
+                BeaconEvent beaconEvent = (BeaconEvent) event;
+                BeaconContent beacon = beaconEvent.getBeacon();
+                BotApiResponse apiResponse = lineMessagingService.replyMessage(
+                        new ReplyMessage(beaconEvent.getReplyToken(), new TextMessage("Beacon受信!! [" + beacon + "]"))
+                ).execute().body();
+                System.out.println("Received beacon: " + apiResponse);
             }
         }
     }
