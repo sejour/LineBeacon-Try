@@ -17,8 +17,16 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 jar {
-    baseName = 'livebeacon-try'
+    baseName = 'linebeacon-try'
     version =  '1.0.0'
+}
+
+springBoot {
+    executable = true
+}
+
+configurations {
+    provided
 }
 
 repositories {
