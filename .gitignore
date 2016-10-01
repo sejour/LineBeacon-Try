@@ -1,0 +1,30 @@
+# Build output
+target/
+build/
+
+# gradle
+/.gradle/
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# IntelliJ
+.idea
+out
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+
+#eclipse
+.project
+.classpath
+.settings
+bin
+
+#Mac
+.DS_Store
+
